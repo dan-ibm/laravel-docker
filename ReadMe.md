@@ -33,3 +33,8 @@ sudo docker run -it --rm --name certbot \
             -v "/var/lib/letsencrypt:/var/lib/letsencrypt" \
             -p 80:80  certbot/certbot certonly
 ```
+
+Command to get IP addresses from containers
+```$xslt
+docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
+```
