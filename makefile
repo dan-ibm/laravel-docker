@@ -44,3 +44,9 @@ connect_db: #Connect to DB container
 
 connect_server: #Connect to container_server container
 	@docker-compose exec $(container_server) /bin/sh
+
+mg: #Connect to APP container
+	@docker-compose exec $(container_php) php artisan migrate
+
+mgf: #Connect to APP container
+	@docker-compose exec $(container_php) php artisan migrate:fresh
